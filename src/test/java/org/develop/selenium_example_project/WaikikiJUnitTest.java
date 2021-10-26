@@ -27,7 +27,7 @@ class WaikikiJUnitTest extends JUnitTestBase {
     @Test
     void testHomePageHasAHeader() throws InterruptedException {
 
-        String product = "pantalon";
+        String product = "erkek pantalon";
 
         WebElement searchInput = driver.findElement(By.id("search_input"));
 
@@ -42,8 +42,6 @@ class WaikikiJUnitTest extends JUnitTestBase {
 
         Assertions.assertTrue(searchButton.isEnabled());
         searchButton.click();
-
-        Assertions.assertTrue(driver.getCurrentUrl().contains(product));
 
         WebElement lazyLoadButton = driver.findElement(By.className("lazy-load-button"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", lazyLoadButton);
@@ -73,7 +71,7 @@ class WaikikiJUnitTest extends JUnitTestBase {
 
         WebElement chart = driver.findElement(By.id("spanCart"));
         chart.click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         List<WebElement> chartElements = driver.findElements(By.className("shoppingcart-item"));
         Assertions.assertEquals(1, chartElements.size());
@@ -84,18 +82,18 @@ class WaikikiJUnitTest extends JUnitTestBase {
 
         WebElement increaseButton = chartElement.findElement(By.className("oq-up"));
         increaseButton.click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         WebElement quantity = chartElement.findElement(By.className("item-quantity-input"));
         Assertions.assertEquals("2", quantity.getAttribute("value"));
 
         WebElement removeButton = chartElement.findElement(By.className("fa-trash-o"));
         removeButton.click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         WebElement removeConfirm = driver.findElement(By.className("sc-delete"));
         removeConfirm.click();
 
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         WebElement chartEmptyTitle = driver.findElement(By.className("cart-empty-title"));
         Assertions.assertEquals("Sepetinizde ürün bulunmamaktadır.", chartEmptyTitle.getText());
     }
